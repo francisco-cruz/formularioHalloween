@@ -1,0 +1,176 @@
+:root {
+  --black: #050505;
+  --white: #fff;
+  --primary-color: #ED6F1D;
+  --primary-color-text: #102732;
+  --background-color: #f5f5f5;
+  --border: 24px;
+  --shadow-form: 0 -2px 30px 0 rgba(0, 0, 0, 0.15)
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.my-button-form {
+  width: 100%;
+}
+
+.my-button-primary {
+  color: var(--white);
+  border-radius: var(--border);
+  background-color: var(--primary-color);
+}
+
+.my-button-primary.enable {
+  color: var(--white);
+  border-radius: var(--border);
+  background-color:var(--primary-color) ;
+  pointer-events: fill;
+  opacity: 1;
+}
+
+.my-button-primary:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.my-button-secundary {
+  color: var(--white);
+  border-radius: var(--border);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color) ;
+  color: var(--primary-color-text);
+}
+
+.content {
+  background-color: var(--white);
+  max-width: 600px;
+  padding: 48px 32px;
+  border-radius: var(--border);
+  box-shadow: var(--shadow-form);
+  margin: 80px  auto;
+}
+
+.content h2 {
+  font-size: clamp(.5em, 2.5em + 1vw, 4em);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: -5px;
+}
+
+small {
+  visibility: hidden;
+  color: #db5a5a;
+}
+
+.form-control.success {
+  border: 2px solid #4eca4e;
+}
+
+.form-control.error {
+  border: 2px solid #db5a5a;
+}
+
+.form-control.error + small {
+  visibility: visible;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+#add-hobby {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+#chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 100%;
+  height: auto;
+  column-gap: 8px;
+  row-gap: 8px;
+  padding-bottom: 24px;
+}
+
+#chips .disable {
+  pointer-events: none;
+  opacity: .5;
+}
+
+.chip {
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border);
+  width: fit-content;
+  height: 32px;
+  display: flex;
+  padding: 0px 8px;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.chip p{
+margin: 0;
+}
+
+
+.chip  svg{
+width: 15px;
+cursor: pointer ;
+}
+
+#modal-background {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#modalBody {
+  display: block;
+  width: 500px;
+  height: auto;
+  background-color: white;
+  border-radius: 24px;
+  padding: 16px;
+
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 48px;
+}
+
+.text-json {
+  padding: 16px;
+  overflow: scroll;
+}
+

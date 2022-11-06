@@ -1,8 +1,6 @@
 import { errorValidation } from "./statesValidation/errorValidation.js";
 import { successValidation } from "./statesValidation/successValidation.js"
 import { hobbies } from "./index.js";
-const chips = []
-
 
 // Validar Input Hobby 
 export function validateHobbyToArray(input, value) {
@@ -13,7 +11,6 @@ export function validateHobbyToArray(input, value) {
 
     return true;
 }
-
 
 // Validar Hobby
 export function validateHobby(input) {

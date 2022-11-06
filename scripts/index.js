@@ -9,7 +9,7 @@ import { validateCidade } from "./validateCidade.js";
 import { validateEstado } from "./validateEstado.js";
 import { validateHobby, validateHobbyToArray, renderChip } from "./validateHobby.js";
 import { validateCheckBox } from "./validateCheckbox.js"
-import { openModal } from "./modal.js"
+import { openModal, removeContent } from "./modal.js"
 import { errorValidation } from "./statesValidation/errorValidation.js"
 const form = document.getElementById("form");
 const nome = document.getElementById("exampleInputNome");
@@ -25,6 +25,9 @@ const hobby = document.getElementById("exampleInputHobby");
 export const hobbies = [];
 const buttonAddHobby = document.getElementById("add-hobby");
 const checkBox = document.getElementById('Check1');
+const content = document.getElementById('content');
+const audioSusto = document.getElementById('susto');
+console.log(audioSusto);
 
 
 // "Enviar" formulário
@@ -110,7 +113,9 @@ function checkInputs() {
       estado: estadoValue,
       hobbies: hobbies,
     };
-
-    openModal(usuario)
+    
+    removeContent(content)
+    openModal(usuario);
+    audioSusto.play();
   }
 }

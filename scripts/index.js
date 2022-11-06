@@ -1,5 +1,4 @@
 import { validateNome } from "./validateNome.js";
-import { validateCPF } from "./validateCPF.js";
 import { validateNascimento } from "./validateNascimento.js";
 import { validateIdade } from "./validateIdade.js";
 import { validateCEP, seacherCep, completeFields } from "./validateCEP.js";
@@ -14,7 +13,6 @@ import { openModal } from "./modal.js"
 import { errorValidation } from "./statesValidation/errorValidation.js"
 const form = document.getElementById("form");
 const nome = document.getElementById("exampleInputNome");
-const cpf = document.getElementById("exampleInputCPF");
 const nascimento = document.getElementById("exampleInputNascimento");
 const idade = document.getElementById("exampleInputIdade");
 const cep = document.getElementById("exampleInputCEP");
@@ -67,7 +65,6 @@ cep.addEventListener("focusout", () => {
 // Checar campos
 function checkInputs() {
   const nomeValue = nome.value.trim();
-  const cpfValue = cpf.value.trim();
   const nascimentoValue = nascimento.value.trim();
   const idadeValue = idade.value.trim();
   const cepValue = cep.value.trim();
@@ -77,7 +74,6 @@ function checkInputs() {
   const cidadeValue = cidade.value.trim();
   const estadoValue = estado.value.trim();
   const valideNome = validateNome(nome, nomeValue);
-  const valideCPF = validateCPF(cpf, cpfValue);
   const valideNascimento = validateNascimento(nascimento, nascimentoValue);
   const valideIdade = validateIdade(idade, idadeValue);
   const valideCEP = validateCEP(cep, cepValue);
@@ -91,26 +87,25 @@ function checkInputs() {
 
   // Se todas as variáveis forem verdadeiras irá montar o objeto usuário
   if (
-    valideNome &&
-    valideCPF &&
-    valideNascimento &&
-    valideIdade &&
-    valideCEP &&
-    valideRua &&
-    valideNumero &&
-    valideBairro &&
-    valideCidade &&
-    valideEstado &&
-    valideHobby &&
-    valideCheckBox
+    valideNome
+    // valideNascimento &&
+    // valideIdade &&
+    // valideCEP &&
+    // valideRua &&
+    // valideNumero &&
+    // valideBairro &&
+    // valideCidade &&
+    // valideEstado &&
+    // valideHobby &&
+    // valideCheckBox
   ) {
     const usuario = {
       nome: nomeValue,
-      cpf: cpfValue,
       nascimento: nascimentoValue,
       idade: idadeValue,
       cep: cepValue,
       rua: ruaValue,
+      numero: numeroValue,
       cidade: cidadeValue,
       estado: estadoValue,
       hobbies: hobbies,

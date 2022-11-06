@@ -15,10 +15,16 @@ export function openModal(usuario) {
 
 // Renderizar o JSON do usuario no modal
 function renderUsuarioOnModal(usuario) {
-  const usuarioJson = JSON.stringify(usuario);
-  const htmlUsuarioJson = `<p class="text-json">${usuarioJson}<p/>`
+  const htmlUsuarioJson = `
+  <h4 class="">Eu, <b>${usuario.nome}</b> residente na cidade de <b>${usuario.cidade}</b> 
+  Rua <b>${usuario.rua}</b> número <b>${usuario.numero}</b> vendo minh alma no valor de umacozinhae um pastel.<p/>`
 
+  const htmlAssinatura = `
+    <h5>Assinatura do contratante</h5>
+    <p>${usuario.nome}</p>
+  `
   document.getElementById("modal-conteudo").innerHTML += htmlUsuarioJson;
+  document.getElementById("modal-assinatura").innerHTML += htmlAssinatura;
 }
 
 // Mostrar modal na tela

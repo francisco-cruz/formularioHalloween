@@ -29,6 +29,11 @@ const content = document.getElementById('content');
 const audioSusto = document.getElementById('susto');
 let yearOld = 0;
 
+const video = document.getElementById('bg_video');
+console.log(video.play());
+
+
+
 // "Enviar" formulário
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -100,17 +105,17 @@ function checkInputs() {
 
   // Se todas as variáveis forem verdadeiras irá montar o objeto usuário
   if (
-    valideNome &&
-    valideNascimento &&
-    valideIdade &&
-    valideCEP &&
-    valideRua &&
-    valideNumero &&
-    valideBairro &&
-    valideCidade &&
-    valideEstado &&
-    valideHobby &&
-    valideCheckBox
+    valideNome
+    // valideNascimento &&
+    // valideIdade &&
+    // valideCEP &&
+    // valideRua &&
+    // valideNumero &&
+    // valideBairro &&
+    // valideCidade &&
+    // valideEstado &&
+    // valideHobby &&
+    // valideCheckBox
   ) {
     const usuario = {
       nome: nomeValue,

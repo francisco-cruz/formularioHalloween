@@ -29,6 +29,6 @@ export function isIdadeDifferent(input, value, yearOld) {
     errorValidation(input, 'Idade não confere com a data de nascimento')
     return true;
   }
-
+  successValidation(input);
   return false;
 }

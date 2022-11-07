@@ -1,7 +1,7 @@
 import { validateNome } from "./validateNome.js";
 import { validateNascimento } from "./validateNascimento.js";
 import { validateIdade } from "./validateIdade.js";
-import { validateCEP, seacherCep, completeFields } from "./validateCEP.js";
+import { validateCEP, seacherCep } from "./validateCEP.js";
 import { validateRua } from "./validateRua.js";
 import { validateNumero } from "./validateNumero.js";
 import { validateBairro } from "./validateBairro.js";
@@ -10,7 +10,7 @@ import { validateEstado } from "./validateEstado.js";
 import { validateHobby, validateHobbyToArray, renderChip } from "./validateHobby.js";
 import { validateCheckBox } from "./validateCheckbox.js"
 import { openModal, removeContent } from "./modal.js"
-import { errorValidation } from "./statesValidation/errorValidation.js"
+import { isIdadeDifferent } from "./validateIdade.js";
 const form = document.getElementById("form");
 const nome = document.getElementById("exampleInputNome");
 const nascimento = document.getElementById("exampleInputNascimento");
@@ -27,11 +27,31 @@ const buttonAddHobby = document.getElementById("add-hobby");
 const checkBox = document.getElementById('Check1');
 const content = document.getElementById('content');
 const audioSusto = document.getElementById('susto');
+let yearOld = 0;
 
 // "Enviar" formulário
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  isIdadeDifferent(idade, idade.value, yearOld);
   checkInputs();
+});
+
+nascimento.addEventListener("focusout", () => {
+  completeIdade(idade, nascimento.value);
+});
+
+
+function completeIdade(inputIdade, valueNascimento) {
+  const nascimentoRegex = valueNascimento.replace(/\//g, "-");
+  const dateArray = nascimentoRegex.split("-");
+
+  const year = dateArray[0];
+  yearOld = new Date().getFullYear() - year;
+  inputIdade.value = yearOld;
+
+}
+idade.addEventListener("focusout", () => {
+  return isIdadeDifferent(idade, idade.value, yearOld);
 });
 
 
@@ -51,7 +71,7 @@ buttonAddHobby.addEventListener("click", () => {
 
 // Consumir api Viacep
 cep.addEventListener("focusout", () => {
-  const dataApi = seacherCep(cep, cep.value);
+  seacherCep(cep, cep.value);
 });
 
 
@@ -68,7 +88,7 @@ function checkInputs() {
   const estadoValue = estado.value.trim();
   const valideNome = validateNome(nome, nomeValue);
   const valideNascimento = validateNascimento(nascimento, nascimentoValue);
-  const valideIdade = validateIdade(idade, idadeValue);
+  const valideIdade = validateIdade(idade, idadeValue, yearOld);
   const valideCEP = validateCEP(cep, cepValue);
   const valideRua = validateRua(rua, ruaValue);
   const valideNumero = validateNumero(numero, numeroValue);
@@ -104,7 +124,7 @@ function checkInputs() {
       estado: estadoValue,
       hobbies: hobbies,
     };
-    
+
     removeContent(content)
     openModal(usuario);
     audioSusto.play();

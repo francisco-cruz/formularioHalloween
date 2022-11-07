@@ -5,11 +5,9 @@ import { successValidation } from "./statesValidation/successValidation.js"
 export function validateNascimento(input, value) {
   const nascimentoRegex = value.replace(/\//g, "-");
   const dateArray = nascimentoRegex.split("-");
-
   const day = dateArray[2];
   const month = dateArray[1]
   const yaer = dateArray[0];
-
   const leapYear = isLeapYear(yaer);
   const valideYaer = isValideYaer(yaer);
   const valideMonth = isValideMonth(month);
@@ -28,6 +26,7 @@ export function validateNascimento(input, value) {
   successValidation(input);
   return true;
 }
+
 
 // Múltiplos de 4, mas que não são múltiplos de 100.
 // Todos os não múltiplos de 400 são bissextos.

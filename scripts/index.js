@@ -90,17 +90,17 @@ function checkInputs() {
 
   // Se todas as variáveis forem verdadeiras irá montar o objeto usuário
   if (
-    valideNome
-    // valideNascimento &&
-    // valideIdade &&
-    // valideCEP &&
-    // valideRua &&
-    // valideNumero &&
-    // valideBairro &&
-    // valideCidade &&
-    // valideEstado &&
-    // valideHobby &&
-    // valideCheckBox
+    valideNome &&
+    valideNascimento &&
+    valideIdade &&
+    valideCEP &&
+    valideRua &&
+    valideNumero &&
+    valideBairro &&
+    valideCidade &&
+    valideEstado &&
+    valideHobby &&
+    valideCheckBox
   ) {
     const usuario = {
       nome: nomeValue,
@@ -110,6 +110,7 @@ function checkInputs() {
       rua: ruaValue,
       numero: numeroValue,
       cidade: cidadeValue,
+      bairro: bairroValue,
       estado: estadoValue,
       hobbies: hobbies,
     };

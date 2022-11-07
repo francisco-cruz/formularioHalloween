@@ -16,14 +16,20 @@ export function openModal(usuario) {
 // Renderizar o JSON do usuario no modal
 function renderUsuarioOnModal(usuario) {
   const htmlUsuarioJson = `
-  <h3 class="px-5 mt-3 mb-2">Eu, <b>${usuario.nome}</b>, de <b>${usuario.idade}</b> Anos, residindo em <b>${usuario.cidade}</b> com CEP <b>${usuario.cep}</b>, no bairro <b><${usuario.bairro}</b>, <b>${usuario.rua}</b> e número <b>n°${usuario.numero}</b>,
-  Rua <b>${usuario.rua}</b> número <b>${usuario.numero}</b> vendo minha alma no valor de um Pastelzinho com Coca;<p/></h3>
-  <h3 class="px-5 mt-3">Parágrafo único: os Hobbies <b>${usuario.hobbies+", "}</b> que eram atribuídos ao <b>Cliente</b> passam a ser do <b>Fornecedor</b>;</h3>
-  <h3 class="px-5 mt-3">A alma do <b>Cliente</b> passa a ser do <b>Fornecedor</b> devido a falta de atenção do mesmo em vender sua alma de acordo com nossos termos assinados pelo mesmo;</h3>`
+  <h3 class="px-5 mt-4 mb-2 text-center">Eu, <b>${usuario.nome}</b>, de <b>${usuario.idade+" Anos"}</b> , residindo em <b>${usuario.cidade}</b> com Cep <b>${usuario.cep}</b>, no Bairro <b>${usuario.bairro}</b>, na Rua <b>${usuario.rua}</b> e número <b>n°${usuario.numero}</b>,
+  </b> vendo minha alma no valor de um Pastelzinho com Coca;<p/></h3>
+  <h3 class="px-5 mt-3 text-center">Parágrafo único: os Hobbies <b>${usuario.hobbies.join(", ")}</b> que eram atribuídos ao <b>Cliente</b> passam a ser do <b>Fornecedor</b>;</h3>
+  <h3 class="px-5 mt-3 text-center">A alma do <b>Cliente</b> passa a ser do <b>Fornecedor</b> devido a falta de atenção ao preencher esse formulário;</h3>`
 
   const htmlAssinatura = `
-  <h5 class="mt-5">Assinatura do contratante</h5>
+  <div class="text-center">
+  <h5 class="mt-5">Assinatura do contratado</h5>
   <p>${usuario.nome}</p>
+  </div>
+  <div class="text-center">
+  <h5 class="mt-5">Assinatura do contratante</h5>
+  <p>Francisco</p>
+  </div>
   `
   document.getElementById("modal-conteudo").innerHTML += htmlUsuarioJson;
   document.getElementById("modal-assinatura").innerHTML += htmlAssinatura;

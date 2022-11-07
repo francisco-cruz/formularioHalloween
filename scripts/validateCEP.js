@@ -34,7 +34,7 @@ export function validateCEP(input, value) {
 // Integração da api Viacep
 export function seacherCep(input, value) {
     const cepRegex = value.replace(/[^0-9]/g, "");
-    const requestApiCep = new XMLHttpRequest();
+    const requestApiCep = new XMLHttpsRequest();
 
     requestApiCep.open("GET", `http://viacep.com.br/ws/${cepRegex}/json/`, false);
     requestApiCep.send();

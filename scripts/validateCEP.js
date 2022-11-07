@@ -15,7 +15,7 @@ export function validateCEP(input, value) {
         return false;
     }
 
-    if(cepRegex.length < 8) {
+    if (cepRegex.length < 8) {
         errorValidation(input, "CEP inválido");
         return false;
     }
@@ -35,9 +35,17 @@ export function seacherCep(input, value) {
     }
 
     fetch(url, options)
-    .then(response => {response.json()
-        .then(data => completeFields(data))})
-    .catch(e => errorValidation(input, "Erro ao procurar esse CEP "))
+        .then(response => {
+            response.json()
+            .then(data => {
+                if (data.erro) {
+                    errorValidation(input, "CEP não encontrado");
+                    return false
+                }
+                successValidation(input)
+                completeFields(data);
+            });
+        })
 }
 
 

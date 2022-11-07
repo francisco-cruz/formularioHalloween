@@ -27,8 +27,6 @@ const buttonAddHobby = document.getElementById("add-hobby");
 const checkBox = document.getElementById('Check1');
 const content = document.getElementById('content');
 const audioSusto = document.getElementById('susto');
-console.log(audioSusto);
-
 
 // "Enviar" formulário
 form.addEventListener("submit", (e) => {

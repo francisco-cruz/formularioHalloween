@@ -22,13 +22,16 @@ export function validateIdade(input, value, yearOld) {
   return true;
 }
 
-
-
 export function isIdadeDifferent(input, value, yearOld) {
-  if (value != yearOld) {
-    errorValidation(input, 'Idade não confere com a data de nascimento')
-    return true;
+const valueIsEqualsYearOld = value == yearOld;
+const valueIsOneYaerMinor = value == yearOld -1;
+
+
+  if (valueIsEqualsYearOld|| valueIsOneYaerMinor) {
+    successValidation(input);
+    return false;
   }
-  successValidation(input);
-  return false;
+
+  errorValidation(input, 'Idade não confere com a data de nascimento')
+  return true;
 }

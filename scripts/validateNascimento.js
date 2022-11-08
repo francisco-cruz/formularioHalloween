@@ -76,7 +76,7 @@ function isValideDay(day, month, leapYear) {
         return true; 
       }
     } else if (month == 2) {
-      if (leapYear && day <= 20) {
+      if (leapYear && day <= 29) {
         return true; 
       }
       else if (!leapYear && day <= 28) { 

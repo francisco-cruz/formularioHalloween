@@ -40,6 +40,12 @@ form.addEventListener("submit", (e) => {
   checkInputs();
 });
 
+function skullJumpScare (){
+  const skull = document.getElementById('float-caveira');
+  skull.classList.add('open-skull');
+}
+
+
 nascimento.addEventListener("focusout", () => {
   completeIdade(idade, nascimento.value);
 });
@@ -126,6 +132,7 @@ function checkInputs() {
     };
 
     removeContent(content);
+    skullJumpScare()
     openModal(usuario);
     audioSusto.play();
   }

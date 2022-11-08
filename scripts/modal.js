@@ -32,11 +32,11 @@ function renderUsuarioOnModal(usuario) {
   const htmlAssinatura = `
   <div class="text-center">
   <h5 class="mt-5">Assinatura do contratado</h5>
-  <p>${usuario.nome}</p>
+  <p id="subs-contratado">${usuario.nome}</p>
   </div>
   <div class="text-center">
   <h5 class="mt-5">Assinatura do contratante</h5>
-  <p>Francisco</p>
+  <p id="subs-contratante">Francisco</p>
   </div>
   `;
   document.getElementById("modal-conteudo").innerHTML += htmlUsuarioJson;

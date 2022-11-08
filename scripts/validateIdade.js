@@ -3,6 +3,7 @@ import { successValidation } from "./statesValidation/successValidation.js";
 
 // Validar idade
 export function validateIdade(input, value, yearOld) {
+
   if (value == "") {
     errorValidation(input, "Preencha esse campo");
     return false;
@@ -14,7 +15,7 @@ export function validateIdade(input, value, yearOld) {
   }
 
   if (isIdadeDifferent(input, value, yearOld)) {
-    errorValidation(input, "Iasudhasghdfhsefuaf");
+    errorValidation(input, "Idade não confere com a data de nascimento");
     return false;
   }
 

@@ -7,9 +7,13 @@ import { validateNumero } from "./validateNumero.js";
 import { validateBairro } from "./validateBairro.js";
 import { validateCidade } from "./validateCidade.js";
 import { validateEstado } from "./validateEstado.js";
-import { validateHobby, validateHobbyToArray, renderChip } from "./validateHobby.js";
-import { validateCheckBox } from "./validateCheckbox.js"
-import { openModal, removeContent } from "./modal.js"
+import {
+  validateHobby,
+  validateHobbyToArray,
+  renderChip,
+} from "./validateHobby.js";
+import { validateCheckBox } from "./validateCheckbox.js";
+import { openModal, removeContent } from "./modal.js";
 import { isIdadeDifferent } from "./validateIdade.js";
 const form = document.getElementById("form");
 const nome = document.getElementById("exampleInputNome");
@@ -24,16 +28,15 @@ const estado = document.getElementById("exampleInputEstado");
 const hobby = document.getElementById("exampleInputHobby");
 export const hobbies = [];
 const buttonAddHobby = document.getElementById("add-hobby");
-const checkBox = document.getElementById('Check1');
-const content = document.getElementById('content');
-const audioSusto = document.getElementById('susto');
-let yearOld = 0;
-
+const checkBox = document.getElementById("Check1");
+const content = document.getElementById("content");
+const audioSusto = document.getElementById("susto");
+let yearsOld = 0;
 
 // "Enviar" formulário
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  isIdadeDifferent(idade, idade.value, yearOld);
+  isIdadeDifferent(idade, idade.value, yearsOld);
   checkInputs();
 });
 
@@ -41,21 +44,18 @@ nascimento.addEventListener("focusout", () => {
   completeIdade(idade, nascimento.value);
 });
 
-
-function completeIdade(inputIdade, valueNascimento) {
-  const nascimentoRegex = valueNascimento.replace(/\//g, "-");
+function completeIdade(idade, nascimentoValue) {
+  const nascimentoRegex = nascimentoValue.replace(/\//g, "-");
   const dateArray = nascimentoRegex.split("-");
 
-  const year = dateArray[0];
-  yearOld = new Date().getFullYear() - year;
-  inputIdade.value = yearOld;
-
+  const currentYear = dateArray[0];
+  yearsOld = new Date().getFullYear() - currentYear;
+  idade.value = yearsOld;
 }
 
 idade.addEventListener("focusout", () => {
-  return isIdadeDifferent(idade, idade.value, yearOld);
+  return isIdadeDifferent(idade, idade.value, yearsOld);
 });
-
 
 // Botão adicionar Hobby
 buttonAddHobby.addEventListener("click", () => {
@@ -70,12 +70,10 @@ buttonAddHobby.addEventListener("click", () => {
   }
 });
 
-
 // Consumir api Viacep
 cep.addEventListener("focusout", () => {
   seacherCep(cep, cep.value);
 });
-
 
 // Checar campos
 function checkInputs() {
@@ -90,7 +88,7 @@ function checkInputs() {
   const estadoValue = estado.value.trim();
   const valideNome = validateNome(nome, nomeValue);
   const valideNascimento = validateNascimento(nascimento, nascimentoValue);
-  const valideIdade = validateIdade(idade, idadeValue, yearOld);
+  const valideIdade = validateIdade(idade, idadeValue, yearsOld);
   const valideCEP = validateCEP(cep, cepValue);
   const valideRua = validateRua(rua, ruaValue);
   const valideNumero = validateNumero(numero, numeroValue);
@@ -98,7 +96,7 @@ function checkInputs() {
   const valideCidade = validateCidade(cidade, cidadeValue);
   const valideEstado = validateEstado(estado, estadoValue);
   const valideHobby = validateHobby(hobby);
-  const valideCheckBox = validateCheckBox(checkBox)
+  const valideCheckBox = validateCheckBox(checkBox);
 
   // Se todas as variáveis forem verdadeiras irá montar o objeto usuário
   if (
@@ -127,7 +125,7 @@ function checkInputs() {
       hobbies: hobbies,
     };
 
-    removeContent(content)
+    removeContent(content);
     openModal(usuario);
     audioSusto.play();
   }

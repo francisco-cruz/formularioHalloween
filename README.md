@@ -1,13 +1,12 @@
-# desafiojsjr
-Repositório dedicado ao desafio da vaga para desenvolvedor JavaScript Junior.
+# formulário hallowen
+Projeto que visa alertar pessoas em relção ao que elas preenchem na internt.
 
-#Validações
-    #CPF
-    #CEP
-    #Nascimento
+### Validações
+- CEP
+- Nascimento
+- Idade
 
-#Referências
-    # Cálculo para validar CPF: https://www.calculadorafacil.com.br/computacao/validar-cpf
-    
-    
+### Diferenciais
+- Hobbies dinâmicos
+
     
